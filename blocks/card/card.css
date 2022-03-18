@@ -1,0 +1,10 @@
+.card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    min-height: 361px;
+    margin-bottom: 20px;
+}
+
+.card:last-child {
+    margin-bottom: 0px;
+}
