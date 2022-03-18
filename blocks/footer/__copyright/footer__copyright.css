@@ -1,11 +1,10 @@
-.profile__subtitle {
+.footer__copyright {
     font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    text-align: center;
-    color: #FFFFFF;
-    margin: 14px 0 0 0;
+    color: #545454;
+    margin: 0;
     padding: 0;
-    }
+}
