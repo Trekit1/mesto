@@ -5,3 +5,11 @@
     margin-left: 27px;
     padding: 0;
 }
+
+@media screen and (min-width: 880px) {
+    .header__logo {
+      width: 142px;
+      height: 33px;
+      margin: 0;
+    }
+}
