@@ -3,7 +3,7 @@
     border-radius: 10px;
     height: 361px;
     margin-bottom: 20px;
-    width: 282px;
+    width: 100%;
 }
 
 .card:last-child {

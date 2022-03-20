@@ -9,4 +9,10 @@
     background-position: center;
     border: 0px white;
     align-self: center;
+    transition: opacity 0.1s linear 0s;
+    cursor: pointer;
+}
+
+.card__button:hover {
+    opacity: 0.5;
 }

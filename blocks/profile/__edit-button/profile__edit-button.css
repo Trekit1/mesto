@@ -12,6 +12,12 @@
     box-sizing: border-box;
     grid-area: edit-button;
     align-self: center;
+    cursor: pointer;
+    transition: opacity 0.1s linear 0s;
+}
+
+.profile__edit-button:hover {
+    opacity: 0.6;
 }
 
 @media screen and (min-width: 880px) {
