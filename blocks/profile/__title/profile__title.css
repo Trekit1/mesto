@@ -12,11 +12,13 @@
     white-space: nowrap;
     overflow: hidden;
     grid-area: title;
+    width: 189px;
 }
 
 @media screen and (min-width: 880px) {
     .profile__title {
         font-size: 42px;
         line-height: 48px;
+        width: 294px;
     }
 }
