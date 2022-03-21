@@ -12,7 +12,7 @@
     white-space: nowrap;
     overflow: hidden;
     grid-area: subtitle;
-    width: 282px;
+    max-width: 282px;
     }
 
 @media screen and (min-width: 880px) {
@@ -20,6 +20,6 @@
         font-size: 18px;
         line-height: 22px;
         text-align: start;
-        width: 336px;
+        max-width: 294px;
     }
 }

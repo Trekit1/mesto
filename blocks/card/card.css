@@ -2,8 +2,9 @@
     background: #FFFFFF;
     border-radius: 10px;
     height: 361px;
+    margin: 0 auto;
     margin-bottom: 20px;
-    width: 100%;
+    width: 282px;
 }
 
 .card:last-child {

@@ -5,10 +5,11 @@
 
 @media screen and (min-width: 570px) and (max-width:879px)  {
     .photo-cards {
-      margin: 51px 0 0 0;
+      justify-content: center;
+      margin: 51px auto 0 auto;
       display: grid;
-      grid-template-columns: repeat(2,1fr);
-      grid-template-rows: repeat(3,1fr);
+      grid-template-columns: repeat(2,282px);
+      grid-template-rows: repeat(3,361px);
       row-gap: 20px;
       column-gap: 17px;
     }
