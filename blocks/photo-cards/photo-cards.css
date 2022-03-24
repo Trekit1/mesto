@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-@media screen and (min-width: 570px) and (max-width:879px)  {
+@media screen and (min-width: 600px) {
     .photo-cards {
       justify-content: center;
       margin: 51px auto 0 auto;
@@ -16,13 +16,10 @@
 }
 
 
-@media screen and (min-width: 880px) {
+@media screen and (min-width: 900px) {
     .photo-cards {
       margin: 51px 0 0 0;
-      display: grid;
       grid-template-columns: repeat(3,1fr);
       grid-template-rows: repeat(2,1fr);
-      row-gap: 20px;
-      column-gap: 17px;
     }
 }

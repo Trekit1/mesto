@@ -5,13 +5,11 @@
     align-items: center;
 }
 
-@media screen and (min-width:880px) {
+@media screen and (min-width:900px) {
     .profile {
         position: relative;
         margin: 42px 0 0 0;
-        display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
     }
 }

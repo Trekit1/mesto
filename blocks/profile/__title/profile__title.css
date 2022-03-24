@@ -15,7 +15,7 @@
     width: 189px;
 }
 
-@media screen and (min-width: 880px) {
+@media screen and (min-width: 900px) {
     .profile__title {
         font-size: 42px;
         line-height: 48px;
