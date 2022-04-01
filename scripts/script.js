@@ -27,3 +27,22 @@ function formSubmitHandler (evt) {
     closeProfilePopup();
 }
 formElement.addEventListener('submit', formSubmitHandler);
+
+const popupAdd = document.querySelector('.popup-add')
+const openPopupAdd = document.querySelector('.profile__add-button');
+const closePopupAdd = document.querySelector('.popup-add__close-button');
+ 
+openPopupAdd.addEventListener('click', function() {
+    popupAdd.classList.add('popup-add_opened');
+})
+
+function closeCardPopup() {
+    popupAdd.classList.remove('popup-add_opened');
+}
+
+closePopupAdd.addEventListener('click',closeCardPopup);
+
+
+
+
+
