@@ -29,15 +29,11 @@
 @import url(../blocks/popup/__field/_profile_job/popup__field_profile_job.css);
 @import url(../blocks/popup/__save-button/popup__save-button.css);
 @import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup-add/popup-add.css);
-@import url(../blocks/popup-add/_opened/popup-add_opened.css);
-@import url(../blocks/popup-add/__title/popup-add__title.css);
-@import url(../blocks/popup-add/__save-button/popup-add__save-button.css);
-@import url(../blocks/popup-add/__field/popup-add__field.css);
-@import url(../blocks/popup-add/__field/_card_link/popup-add__field_card_link.css);
-@import url(../blocks/popup-add/__field/_card_name/popup-add__field_card_name.css);
-@import url(../blocks/popup-add/__container/popup-add__container.css);
-@import url(../blocks/popup-add/__close-button/popup-add__close-button.css);
+@import url(../blocks/popup/__field/_card_link/popup__field_card_link.css);
+@import url(../blocks/popup/__field/_card_name/popup__field_card_name.css);
+@import url(../blocks/popup/__add/popup__add.css);
+@import url(../blocks/popup/__edit/popup__edit.css);
+
 
 
 

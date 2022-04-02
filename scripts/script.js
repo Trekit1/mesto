@@ -1,20 +1,27 @@
 const popup = document.querySelector('.popup');
-const openPopup = document.querySelector('.profile__edit-button');
-const closePopup = document.querySelector('.popup__close-button');
+const popupEdit = document.querySelector('.popup__edit')
+const openPopupEdit = document.querySelector('.profile__edit-button');
+const closePopupEdit = popupEdit.querySelector('.popup__close-button');
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
  
-openPopup.addEventListener('click', function() {
+function openPopup(popup) {
     popup.classList.add('popup_opened');
+}
+
+
+openPopupEdit.addEventListener('click', function() {
+    openPopup(popupEdit);
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 })
 
-function closeProfilePopup() {
+
+function closePopup(popup) {
     popup.classList.remove('popup_opened');
 }
 
-closePopup.addEventListener('click',closeProfilePopup);
+closePopupEdit.addEventListener('click', () => closePopup(popupEdit));
 
 const formElement = document.querySelector('.popup__container');
 const nameInput = formElement.querySelector('.popup__field_profile_name');
@@ -24,23 +31,26 @@ function formSubmitHandler (evt) {
     evt.preventDefault(); 
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    closeProfilePopup();
+    closePopup(popupEdit);
 }
+
 formElement.addEventListener('submit', formSubmitHandler);
 
-const popupAdd = document.querySelector('.popup-add')
+
+const popupAdd = document.querySelector('.popup__add')
 const openPopupAdd = document.querySelector('.profile__add-button');
-const closePopupAdd = document.querySelector('.popup-add__close-button');
+const closePopupAdd = popupAdd.querySelector('.popup__close-button');
  
 openPopupAdd.addEventListener('click', function() {
-    popupAdd.classList.add('popup-add_opened');
+    openPopup(popupAdd);
 })
 
-function closeCardPopup() {
-    popupAdd.classList.remove('popup-add_opened');
-}
+closePopupAdd.addEventListener('click', () => closePopup(popupAdd));
 
-closePopupAdd.addEventListener('click',closeCardPopup);
+
+
+
+
 
 
 

@@ -70,7 +70,7 @@
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup">
+  <div class="popup popup__edit">
     <form class="popup__container" name="profile-form">
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
@@ -79,15 +79,14 @@
       <button type="submit" class="popup__save-button">Сохранить</button>
     </form>
   </div>
-  <div class="popup-add">
-    <form class="popup-add__container" name="card-form">
-      <button type="button" class="popup-add__close-button"></button>
-      <h2 class="popup-add__title">Новое место</h2>
-      <input type="text" class="popup-add__field popup-add__field_card_name" value="Название">
-      <input type="text" class="popup-add__field popup-add__field_card_link" value="Ссылка на картинку">
-      <button type="submit" class="popup-add__save-button">Сохранить</button>
+  <div class="popup popup__add">
+    <form class="popup__container" name="card-form">
+      <button type="button" class="popup__close-button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <input type="text" class="popup__field popup__field_card_name" value="Название">
+      <input type="text" class="popup__field popup__field_card_link" value="Ссылка на картинку">
+      <button type="submit" class="popup__save-button">Сохранить</button>
     </form>
-  </div>
   <script src="./scripts/script.js"></script>
 </body>
 </html>
