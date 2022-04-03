@@ -4,6 +4,7 @@ const openPopupEdit = document.querySelector('.profile__edit-button');
 const closePopupEdit = popupEdit.querySelector('.popup__close-button');
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
+
  
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -24,8 +25,7 @@ function closePopup(popup) {
 closePopupEdit.addEventListener('click', () => closePopup(popupEdit));
 
 const formElement = document.querySelector('.popup__container');
-const nameInput = formElement.querySelector('.popup__field_profile_name');
-const jobInput = formElement.querySelector('.popup__field_profile_job');
+
 
 function formSubmitHandler (evt) {
     evt.preventDefault(); 
@@ -53,6 +53,12 @@ const cardImage = document.querySelector('.card__image');
 cardImage.addEventListener('click', () => openPopup(popupPhoto));
 
 closePopupPhoto.addEventListener('click', () => closePopup(popupPhoto));
+
+const Like = document.querySelector('.card__like-button');
+
+Like.addEventListener('click', () => Like.classList.toggle('card__like-button_active'));
+
+
 
 
 
