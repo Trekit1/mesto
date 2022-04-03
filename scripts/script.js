@@ -37,15 +37,23 @@ function formSubmitHandler (evt) {
 formElement.addEventListener('submit', formSubmitHandler);
 
 
-const popupAdd = document.querySelector('.popup__add')
+//открытие и закрытие popupAdd
+const popupAdd = document.querySelector('.popup__add');
 const openPopupAdd = document.querySelector('.profile__add-button');
 const closePopupAdd = popupAdd.querySelector('.popup__close-button');
- 
-openPopupAdd.addEventListener('click', function() {
-    openPopup(popupAdd);
-})
 
+openPopupAdd.addEventListener('click', () => openPopup(popupAdd));
 closePopupAdd.addEventListener('click', () => closePopup(popupAdd));
+
+//открытие и закрытие popupPhoto
+const popupPhoto = document.querySelector('.popup__photo');
+const closePopupPhoto = popupPhoto.querySelector('.popup__close-button');
+const cardImage = document.querySelector('.card__image');
+
+cardImage.addEventListener('click', () => openPopup(popupPhoto));
+
+closePopupPhoto.addEventListener('click', () => closePopup(popupPhoto));
+
 
 
 
