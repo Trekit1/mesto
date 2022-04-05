@@ -38,6 +38,8 @@
 @import url(../blocks/popup/__photo-container/popup__photo-container.css);
 @import url(../blocks/popup/__photo-image/popup__photo-image.css);
 @import url(../blocks/card/__delete-button/card__delete-button.css);
+@import url(../blocks/popup/__container/_add/popup__container_add.css);
+@import url(../blocks/popup/__container/_edit/popup__container_edit.css);
 
 
 
