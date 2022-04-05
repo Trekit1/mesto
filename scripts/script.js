@@ -1,5 +1,5 @@
 const popup = document.querySelector('.popup');
-const popupEdit = document.querySelector('.popup__edit');
+const popupEdit = document.querySelector('.popup_edit');
 const openPopupEdit = document.querySelector('.profile__edit-button');
 const closePopupEdit = popupEdit.querySelector('.popup__close-button');
 const nameInput = document.querySelector('.popup__field_profile_name');
@@ -40,7 +40,7 @@ formElementEdit.addEventListener('submit', formSubmitHandlerEdit);
 
 
 //открытие и закрытие popupAdd
-const popupAdd = document.querySelector('.popup__add');
+const popupAdd = document.querySelector('.popup_add');
 const openPopupAdd = document.querySelector('.profile__add-button');
 const closePopupAdd = popupAdd.querySelector('.popup__close-button');
 
@@ -78,7 +78,7 @@ const cards = document.querySelector('.photo-cards');
 const addCardForm = document.querySelector('.popup__container_add');
 const cardName = document.querySelector('.popup__field_card_name');
 const cardLink = document.querySelector('.popup__field_card_link');
-const popupPhoto = document.querySelector('.popup__photo');
+const popupPhoto = document.querySelector('.popup_photo');
 const closePopupPhoto = popupPhoto.querySelector('.popup__close-button');
 
 closePopupPhoto.addEventListener('click', () => closePopup(popupPhoto));
