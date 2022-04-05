@@ -1,6 +1,9 @@
 .popup {
     font-family: "inter", Arial, sans-serif;
     position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.4s, opacity 0.4s;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -12,7 +15,4 @@
     right: 0;
     bottom: 0;
     top: 0;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0.2s, opacity 0.2s linear;
 }

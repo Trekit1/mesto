@@ -5,30 +5,30 @@ const closePopupEdit = popupEdit.querySelector('.popup__close-button');
 const nameInput = document.querySelector('.popup__field_profile_name');
 const jobInput = document.querySelector('.popup__field_profile_job');
 
- //открыть попап
+ 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
 
-//открыть попап профиля 
+
 openPopupEdit.addEventListener('click', function() {
     openPopup(popupEdit);
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 })
 
-//закрыть попап
+
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
 }
-//закрыть попап редактирования 
+
 closePopupEdit.addEventListener('click', () => closePopup(popupEdit));
 
 const formElementEdit = document.querySelector('.popup__container_edit');
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 
-//форма для изменения имени и работы в профиле 
+
 function formSubmitHandlerEdit (evt) {
     evt.preventDefault(); 
     profileName.textContent = nameInput.value;
@@ -39,16 +39,13 @@ function formSubmitHandlerEdit (evt) {
 formElementEdit.addEventListener('submit', formSubmitHandlerEdit);
 
 
-//открыть и закрыть попап добавления карточки 
+//открытие и закрытие popupAdd
 const popupAdd = document.querySelector('.popup__add');
 const openPopupAdd = document.querySelector('.profile__add-button');
 const closePopupAdd = popupAdd.querySelector('.popup__close-button');
 
 openPopupAdd.addEventListener('click', () => openPopup(popupAdd));
 closePopupAdd.addEventListener('click', () => closePopup(popupAdd));
-
-//закрыть фото попап
-closePopupPhoto.addEventListener('click', () => closePopup(popupPhoto));
 
 const initialCards = [
     {
@@ -84,7 +81,8 @@ const cardLink = document.querySelector('.popup__field_card_link');
 const popupPhoto = document.querySelector('.popup__photo');
 const closePopupPhoto = popupPhoto.querySelector('.popup__close-button');
 
-//6 карточек на страницу
+closePopupPhoto.addEventListener('click', () => closePopup(popupPhoto));
+
 const createCards = (name, link) => {
   const template = document.querySelector('#template').content;
   const card = template.querySelector('.card').cloneNode(true);
@@ -137,4 +135,6 @@ const elements = initialCards.map(function(card) {
 })
 
 cards.append(...elements);
-  
+
+
+
