@@ -110,10 +110,11 @@ const createCard = (name, link) => {
     card.remove();
   });
 
-  card.querySelector('.card__image').addEventListener('click', function popupPhotoOpen () {
+  cardImage.addEventListener('click', function popupPhotoOpen () {
     popupPhoto.querySelector('.popup__photo-name').textContent = name;
-    popupPhoto.querySelector('.popup__photo-image').src = link;
-    popupPhoto.querySelector('.popup__photo-image').alt = name;
+    const popupPhotoImage = popupPhoto.querySelector('.popup__photo-image');
+    popupPhotoImage.src = link;
+    popupPhotoImage.alt = name;
     openPopup(popupPhoto);
   });
 
@@ -127,7 +128,6 @@ const renderCard = (name, link) => {
 //Добавление новой карточки 
 function formSubmitHandlerCard (evt) {
   evt.preventDefault(); 
-  createCard(cardNameInput.value, cardLinkInput.value)
   renderCard(cardNameInput.value, cardLinkInput.value);
   closePopup(popupCard);
   cardNameInput.value = '';
