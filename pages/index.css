@@ -20,26 +20,26 @@
 @import url(../blocks/card/__under/card__under.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+@import url(../blocks/card/__delete-button/card__delete-button.css);
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup//_photo/popup_photo.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/__container/popup__container.css);
-@import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/_profile/popup_profile.css);
+@import url(../blocks/popup/_card/popup_card.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__save-button/popup__save-button.css);
+@import url(../blocks/popup/__photo-name/popup__photo-name.css);
+@import url(../blocks/popup/__photo-image/popup__photo-image.css);
+@import url(../blocks/popup/__photo-container/popup__photo-container.css);
 @import url(../blocks/popup/__field/popup__field.css);
 @import url(../blocks/popup/__field/_profile_name/popup__field_profile_name.css);
 @import url(../blocks/popup/__field/_profile_job/popup__field_profile_job.css);
-@import url(../blocks/popup/__save-button/popup__save-button.css);
-@import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup/__field/_card_link/popup__field_card_link.css);
 @import url(../blocks/popup/__field/_card_name/popup__field_card_name.css);
-@import url(../blocks/popup/__add/popup_add.css);
-@import url(../blocks/popup/__edit/popup_edit.css);
-@import url(../blocks/popup/__photo/popup_photo.css);
-@import url(../blocks/popup/__photo-name/popup__photo-name.css);
-@import url(../blocks/popup/__photo-container/popup__photo-container.css);
-@import url(../blocks/popup/__photo-image/popup__photo-image.css);
-@import url(../blocks/card/__delete-button/card__delete-button.css);
-@import url(../blocks/popup/__container/_add/popup__container_add.css);
-@import url(../blocks/popup/__container/_edit/popup__container_edit.css);
+@import url(../blocks/popup/__field/_card_link/popup__field_card_link.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__container/_profile/popup__container_profile.css);
+@import url(../blocks/popup/__container/_card/popup__container_card.css);
+@import url(../blocks/popup/__close-button/popup__close-button.css);
 
 
 
