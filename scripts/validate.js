@@ -22,9 +22,11 @@ const checkInputValidity = (formElement, inputElement) => {
 };
 
 const setEventListeners = (formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll('.popup__field')); 
+    const inputList = Array.from(formElement.querySelectorAll('.popup__field'));
+    const buttonElement = formElement.querySelector('.popup__save-button');
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', function () {
+        toggleButtonState (inputList, buttonElement);
         checkInputValidity(formElement, inputElement);
     });
   }); 
@@ -45,18 +47,48 @@ const enableValidation = () => {
     enableValidation()
 
 
-//открытие попап с валидацией
+//открытие попап Profile с валидацией
 popupProfileOpen.addEventListener('click', function () {
   profileNameInput.value = profileName.textContent;
   profileJobInput.value = profileJob.textContent;
   openPopup(popupProfile);
   const popupFormProfile = document.querySelector('.popup__container_profile');
   const inputList = Array.from(popupFormProfile.querySelectorAll('.popup__field'));
+  const buttonElement = popupFormProfile.querySelector('.popup__save-button');
   inputList.forEach((popupInput) => {
+    toggleButtonState (inputList, buttonElement)
     checkInputValidity(popupFormProfile, popupInput);
   });
 });
 
+
+//disabled кнопки "сохранить"
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+   return !inputElement.validity.valid;
+ }); 
+ }
+
+ function toggleButtonState (inputList, buttonElement)  {
+  if (hasInvalidInput(inputList)) {
+  buttonElement.classList.add('popup__save-button_disable');
+  buttonElement.setAttribute("disabled", "disabled");
+} else {
+  buttonElement.classList.remove('popup__save-button_disable');
+  buttonElement.removeAttribute("disabled", "disabled");
+} 
+}
+
+//открыть попап Card с валидацией 
+popupCardOpen.addEventListener('click', function () {
+  openPopup(popupCard);
+  const popupFormCard = document.querySelector('.popup__container_card');
+  const inputList = Array.from(popupFormCard.querySelectorAll('.popup__field'));
+  const buttonElement = popupFormCard.querySelector('.popup__save-button');
+  inputList.forEach((popupInput) => {
+    toggleButtonState (inputList, buttonElement)
+  });
+}); 
 
 
 
