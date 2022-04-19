@@ -16,11 +16,23 @@ const template = document.querySelector('#template').content;
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
 }
+
+//закрыть попап нажатием Esc
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(popupProfile)
+    closePopup(popupCard)
+    closePopup(popupPhoto)
+  }
+};
+
 
 //закрыть попап профиля
 popupProfileClose.addEventListener('click', () => closePopup(popupProfile));
@@ -134,6 +146,21 @@ const elements = initialCards.map(function(card) {
 })
 
 cardContainer.append(...elements);
+
+
+//закрыть попап нажатием на overlay
+
+const popupList = Array.from(document.querySelectorAll('.popup'));
+popupList.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+        closePopup(popup);
+    }
+  })
+});
+
+
+
 
 
 
