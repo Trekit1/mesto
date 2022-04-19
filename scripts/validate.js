@@ -53,25 +53,6 @@ const enableValidation = ({formSelector, inputSelector, submitButtonSelector, in
       errorClass: 'popup__error-text_active'
     }); 
 
-
-
-
-
-//открытие попап Profile с валидацией
-popupProfileOpen.addEventListener('click', function () {
-  profileNameInput.value = profileName.textContent;
-  profileJobInput.value = profileJob.textContent;
-  openPopup(popupProfile);
-  const popupFormProfile = document.querySelector('.popup__container_profile');
-  const inputList = Array.from(popupFormProfile.querySelectorAll('.popup__field'));
-  const buttonElement = popupFormProfile.querySelector('.popup__save-button');
-  inputList.forEach((popupInput) => {
-    toggleButtonState (inputList, buttonElement, 'popup__save-button_disable')
-    checkInputValidity(popupFormProfile, popupInput, 'popup__field_type_error', 'popup__error-text_active');
-  });
-});
-
-
 //disable кнопки "сохранить"
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
@@ -89,16 +70,7 @@ const hasInvalidInput = (inputList) => {
 } 
 }
 
-//открыть попап Card с валидацией 
-popupCardOpen.addEventListener('click', function () {
-  openPopup(popupCard);
-  const popupFormCard = document.querySelector('.popup__container_card');
-  const inputList = Array.from(popupFormCard.querySelectorAll('.popup__field'));
-  const buttonElement = popupFormCard.querySelector('.popup__save-button');
-  inputList.forEach(() => {
-    toggleButtonState (inputList, buttonElement, 'popup__save-button_disable')
-  });
-}); 
+
 
 
 
