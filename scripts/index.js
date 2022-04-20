@@ -3,7 +3,6 @@ const popupCard = document.querySelector('.popup_card');
 const popupPhoto = document.querySelector('.popup_photo');
 const popupInput = document.querySelector('.popup__field')
 const popupProfileOpen = document.querySelector('.profile__edit-button');
-const popupProfileClose = popupProfile.querySelector('.popup__close-button');
 const profileNameInput = document.querySelector('.popup__field_profile_name');
 const profileJobInput = document.querySelector('.popup__field_profile_job');
 const popupPhotoImage = popupPhoto.querySelector('.popup__photo-image');
@@ -17,27 +16,20 @@ const template = document.querySelector('#template').content;
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupEsc(popup));
+  document.addEventListener('keydown', closePopupEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupEsc(popup));
+  document.removeEventListener('keydown', closePopupEsc);
 }
 
-//закрыть попап нажатием Esc
-function closePopupEsc(popup){
-  return function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popup)
-    }
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup); 
   }
-};
-
-
-//закрыть попап профиля
-popupProfileClose.addEventListener('click', () => closePopup(popupProfile));
-
+}  
 
 
 const formElementProfile = document.querySelector('.popup__container_profile');
@@ -54,13 +46,6 @@ function formSubmitHandlerProfile (evt) {
 
 formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
 
-
-//закрыть popupCard
-popupCardClose.addEventListener('click', function () {
-  closePopup(popupCard);
-  cardNameInput.value = '';
-  cardLinkInput.value = '';
-  });
 
 const initialCards = [
     {
@@ -94,8 +79,6 @@ const FormElementCard = document.querySelector('.popup__container_card');
 const cardNameInput = document.querySelector('.popup__field_card_name');
 const cardLinkInput = document.querySelector('.popup__field_card_link');
 
-//закрыть popupPhoto
-popupPhotoClose.addEventListener('click', () => closePopup(popupPhoto));
 
 //6 карточек
 const createCard = (name, link) => {
@@ -134,8 +117,6 @@ function formSubmitHandlerCard (evt) {
   evt.preventDefault(); 
   renderCard(cardNameInput.value, cardLinkInput.value);
   closePopup(popupCard);
-  cardNameInput.value = '';
-  cardLinkInput.value = '';
 }
 
 FormElementCard.addEventListener('submit', formSubmitHandlerCard);
@@ -147,27 +128,32 @@ const elements = initialCards.map(function(card) {
 cardContainer.append(...elements);
 
 
-//закрыть попап нажатием на overlay
+//закрыть попап нажатием на overlay и крестик
 
 const popupList = Array.from(document.querySelectorAll('.popup'));
 popupList.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
         closePopup(popup);
+        return false;
     }
+    if (evt.target.classList.contains('popup__close-button')) {
+      closePopup(popup);
+      return false;
+  }
   })
 });
 
 
 //открыть попап Card
 popupCardOpen.addEventListener('click', function () {
+  cardNameInput.value = '';
+  cardLinkInput.value = '';
   openPopup(popupCard);
   const popupFormCard = document.querySelector('.popup__container_card');
   const inputList = Array.from(popupFormCard.querySelectorAll('.popup__field'));
   const buttonElement = popupFormCard.querySelector('.popup__save-button');
-  inputList.forEach(() => {
-    toggleButtonState (inputList, buttonElement, 'popup__save-button_disable')
-  });
+  toggleButtonState (inputList, buttonElement, 'popup__save-button_disable')
 }); 
 
 
@@ -179,8 +165,8 @@ popupProfileOpen.addEventListener('click', function () {
   const popupFormProfile = document.querySelector('.popup__container_profile');
   const inputList = Array.from(popupFormProfile.querySelectorAll('.popup__field'));
   const buttonElement = popupFormProfile.querySelector('.popup__save-button');
+  toggleButtonState (inputList, buttonElement, 'popup__save-button_disable')
   inputList.forEach((popupInput) => {
-    toggleButtonState (inputList, buttonElement, 'popup__save-button_disable')
     checkInputValidity(popupFormProfile, popupInput, 'popup__field_type_error', 'popup__error-text_active');
   });
 });
