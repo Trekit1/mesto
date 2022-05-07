@@ -125,7 +125,7 @@ popupList.forEach((popup) => {
 });
 
 //селекоторы для валидации 
-const enableValidation = {
+const selectorsValidator = {
   formSelector: '.popup__container',
   inputSelector: '.popup__field',
   submitButtonSelector: '.popup__save-button',
@@ -138,8 +138,8 @@ const popupFormProfile = document.querySelector('.popup__container_profile');
 const popupFormCard = document.querySelector('.popup__container_card');
 
 
-const ProfileFormValidaor = new FromValidator(enableValidation, popupFormProfile);
-const CardFormValidator = new FromValidator(enableValidation, popupFormCard);
+const ProfileFormValidaor = new FromValidator(selectorsValidator, popupFormProfile);
+const CardFormValidator = new FromValidator(selectorsValidator, popupFormCard);
 
 
 
