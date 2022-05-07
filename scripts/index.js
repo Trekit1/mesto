@@ -1,4 +1,5 @@
 import Card from './card.js'
+import FromValidator from './FormValidator.js';
 
 const popupProfile = document.querySelector('.popup_profile');
 const popupCard = document.querySelector('.popup_card');
@@ -123,16 +124,29 @@ popupList.forEach((popup) => {
   })
 });
 
+//селекоторы для валидации 
+const enableValidation = {
+  formSelector: '.popup__container',
+  inputSelector: '.popup__field',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_disable',
+  inputErrorClass: 'popup__field_type_error',
+  errorClass: 'popup__error-text_active'
+}; 
+
+const popupFormProfile = document.querySelector('.popup__container_profile');
+const popupFormCard = document.querySelector('.popup__container_card');
+
+const ProfileFormValidaor = new FromValidator(enableValidation, popupFormProfile)
+const CardFormValidator = new FromValidator(enableValidation, popupFormCard)
+
 
 //открыть попап Card
 popupCardOpen.addEventListener('click', function () {
   cardNameInput.value = '';
   cardLinkInput.value = '';
+  CardFormValidator.enableValidation();
   openPopup(popupCard);
-  const popupFormCard = document.querySelector('.popup__container_card');
-  const inputList = Array.from(popupFormCard.querySelectorAll('.popup__field'));
-  const buttonElement = popupFormCard.querySelector('.popup__save-button');
-  toggleButtonState (inputList, buttonElement, 'popup__save-button_disable')
 }); 
 
 
@@ -140,14 +154,9 @@ popupCardOpen.addEventListener('click', function () {
 popupProfileOpen.addEventListener('click', function () {
   profileNameInput.value = profileName.textContent;
   profileJobInput.value = profileJob.textContent;
+  ProfileFormValidaor.enableValidation();
   openPopup(popupProfile);
-  const popupFormProfile = document.querySelector('.popup__container_profile');
-  const inputList = Array.from(popupFormProfile.querySelectorAll('.popup__field'));
-  const buttonElement = popupFormProfile.querySelector('.popup__save-button');
-  toggleButtonState (inputList, buttonElement, 'popup__save-button_disable')
-  inputList.forEach((popupInput) => {
-    checkInputValidity(popupFormProfile, popupInput, 'popup__field_type_error', 'popup__error-text_active');
-  });
+ 
 });
 
 
