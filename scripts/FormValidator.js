@@ -9,8 +9,8 @@ export default class FromValidator {
     _showError = (inputElement, errorMessage) => {
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.add(this._selectors.inputErrorClass);
+        errorElement.classList.add(this._selectors.errorClass);
         errorElement.textContent = errorMessage;
-        errorElement.classList.add(this._selectors.errorClass)
       };
       
       
@@ -33,8 +33,8 @@ export default class FromValidator {
       this._toggleButtonState();
         this._inputList.forEach((inputElement) => {
           inputElement.addEventListener('input', function () {
-            this._checkInputValidity(inputElement);
             this._toggleButtonState();  
+            this._checkInputValidity(inputElement);
         }.bind(this));
       }); 
       };

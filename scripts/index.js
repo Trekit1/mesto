@@ -137,26 +137,28 @@ const enableValidation = {
 const popupFormProfile = document.querySelector('.popup__container_profile');
 const popupFormCard = document.querySelector('.popup__container_card');
 
-const ProfileFormValidaor = new FromValidator(enableValidation, popupFormProfile)
-const CardFormValidator = new FromValidator(enableValidation, popupFormCard)
+
+const ProfileFormValidaor = new FromValidator(enableValidation, popupFormProfile);
+const CardFormValidator = new FromValidator(enableValidation, popupFormCard);
+
+
 
 
 //открыть попап Card
-popupCardOpen.addEventListener('click', function () {
+popupCardOpen.addEventListener('click', () => {
   cardNameInput.value = '';
   cardLinkInput.value = '';
-  CardFormValidator.enableValidation();
   openPopup(popupCard);
+  CardFormValidator.enableValidation();
 }); 
 
 
 //открытие попап Profile
-popupProfileOpen.addEventListener('click', function () {
+popupProfileOpen.addEventListener('click', () => {
   profileNameInput.value = profileName.textContent;
   profileJobInput.value = profileJob.textContent;
-  ProfileFormValidaor.enableValidation();
   openPopup(popupProfile);
- 
+  ProfileFormValidaor.enableValidation();
 });
 
 
