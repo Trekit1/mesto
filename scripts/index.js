@@ -9,7 +9,7 @@ const popupProfileOpen = document.querySelector('.profile__edit-button');
 const profileNameInput = document.querySelector('.popup__field_profile_name');
 const profileJobInput = document.querySelector('.popup__field_profile_job');
 const popupPhotoImage = popupPhoto.querySelector('.popup__photo-image');
-
+const popupPhotoName = popupPhoto.querySelector('.popup__photo-name')
 
 const popupCardOpen = document.querySelector('.profile__add-button');
 const popupCardClose = popupCard.querySelector('.popup__close-button');
@@ -138,9 +138,11 @@ const popupFormProfile = document.querySelector('.popup__container_profile');
 const popupFormCard = document.querySelector('.popup__container_card');
 
 
-const ProfileFormValidaor = new FromValidator(selectorsValidator, popupFormProfile);
+const ProfileFormValidator = new FromValidator(selectorsValidator, popupFormProfile);
 const CardFormValidator = new FromValidator(selectorsValidator, popupFormCard);
 
+ProfileFormValidator.enableValidation();
+CardFormValidator.enableValidation();
 
 
 
@@ -149,7 +151,7 @@ popupCardOpen.addEventListener('click', () => {
   cardNameInput.value = '';
   cardLinkInput.value = '';
   openPopup(popupCard);
-  CardFormValidator.enableValidation();
+  CardFormValidator.resetValidation();
 }); 
 
 
@@ -158,12 +160,12 @@ popupProfileOpen.addEventListener('click', () => {
   profileNameInput.value = profileName.textContent;
   profileJobInput.value = profileJob.textContent;
   openPopup(popupProfile);
-  ProfileFormValidaor.enableValidation();
+  ProfileFormValidator.resetValidation();
 });
 
 
 function popupPhotoOpen (name, link) {
-  popupPhoto.querySelector('.popup__photo-name').textContent = name;
+  popupPhotoName.textContent = name;
   popupPhotoImage.src = link;
   popupPhotoImage.alt = name;
   openPopup(popupPhoto);

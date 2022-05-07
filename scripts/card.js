@@ -4,6 +4,8 @@ export default class Card {
         this._link = data.link;
         this._cardSelector = cardSelector;
         this._popupPhotoOpen = popupPhotoOpen;
+        this._element = this._templateCard();
+        this._CardLikeButton = this._element.querySelector('.card__like-button');
     }
 
     _templateCard() {
@@ -14,7 +16,6 @@ export default class Card {
     }
 
     createCard() {
-        this._element = this._templateCard();
         this._element.querySelector('.card__title').textContent = this._name;
         const cardImage = this._element.querySelector('.card__image');
         cardImage.src = this._link;
@@ -24,7 +25,7 @@ export default class Card {
     }
 
     _setEventListeners() {
-        this._element.querySelector('.card__like-button').addEventListener('click', () => {
+        this._CardLikeButton.addEventListener('click', () => {
             this._likeButton();
         })
 
@@ -38,7 +39,7 @@ export default class Card {
     }
 
     _likeButton() {
-        this._element.querySelector('.card__like-button').classList.toggle('card__like-button_active');
+        this._CardLikeButton.classList.toggle('card__like-button_active');
     }
 
     _deleteCard() {
