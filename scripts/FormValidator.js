@@ -30,7 +30,6 @@ export default class FromValidator {
       };
 
     _setEventListeners = () => {
-      this._toggleButtonState();
         this._inputList.forEach((inputElement) => {
           inputElement.addEventListener('input', function () {
             this._toggleButtonState();  
