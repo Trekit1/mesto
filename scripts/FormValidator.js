@@ -31,10 +31,10 @@ export default class FromValidator {
 
     _setEventListeners = () => {
         this._inputList.forEach((inputElement) => {
-          inputElement.addEventListener('input', function () {
+          inputElement.addEventListener('input', () => {
             this._toggleButtonState();  
             this._checkInputValidity(inputElement);
-        }.bind(this));
+        });
       }); 
       };
 
