@@ -14,8 +14,6 @@ export default class PopupWithForm extends Popup {
 
         const formValues = {};
 
-        
-
         inputList.forEach(input => {
             formValues[input.name] = input.value;
         });
@@ -29,6 +27,7 @@ export default class PopupWithForm extends Popup {
             evt.preventDefault(); 
             this._handleFormSubmit(this._getInputValues());
         });
+
     }
 
     close() {
