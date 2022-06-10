@@ -8,34 +8,11 @@ export const profileJob = document.querySelector(".profile__subtitle");
 export const popupProfileSelector = '.popup_profile';
 export const popupCardSelector = '.popup_card';
 export const popupPhotoSelector = '.popup_photo';
+export const popupAvatarSelector = '.popup_avatar';
+export const popupConfirmSelector = '.popup_confirm';
 
-export const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ]; 
 
+export const userAvatar = document.querySelector('.profile__avatar')
   
 
 export const cardContainer = document.querySelector('.photo-cards');
@@ -56,3 +33,23 @@ export const selectorsValidator = {
     inputErrorClass: 'popup__field_type_error',
     errorClass: 'popup__error-text_active'
   }; 
+
+
+  
+export const popupAvatarContainer = document.querySelector('.popup__container_avatar')
+
+export const popupCardContainer = document.querySelector('.popup__container_card')
+
+export const popupProfileContainer = document.querySelector('.popup__container_profile')
+
+export const saveButtonAvatar = popupAvatarContainer.querySelector('.popup__save-button');
+
+export const saveButtonCard = popupCardContainer.querySelector('.popup__save-button');
+
+export const saveButtonProfile = popupProfileContainer.querySelector('.popup__save-button');
+
+export const profileAvatar = document.querySelector('.profile__avatar');
+
+export const avatarLinkInput = document.querySelector('.popup__field_avatar_link')
+
+export const popupAvatarOpen = document.querySelector('.profile__avatar-cover')

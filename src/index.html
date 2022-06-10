@@ -12,7 +12,10 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img src= "<%=require("./images/avatar.jpg")%>" alt="аватар" class="profile__avatar">
+        <div class="profile__avatar-container">
+          <img src= "<%=require("./images/avatar.jpg")%>" alt="аватар" class="profile__avatar">
+          <div class="profile__avatar-cover"></div>
+        </div>
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit-button"></button>
@@ -32,14 +35,10 @@
     <form class="popup__container popup__container_profile" name="profile-form" novalidate>
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-
       <input id="profile-name" name="profileName" type="text" class="popup__field popup__field_profile_name" value="" minlength="2" maxlength="40" required>
       <span class="profile-name-error  popup__error-text"></span>
-
       <input id="profile-job" name="profileJob" type="text" class="popup__field popup__field_profile_job" value="" minlength="2" maxlength="200" required>
       <span class="profile-job-error  popup__error-text"></span>
-      
-
       <button type="submit" class="popup__save-button">Сохранить</button>
     </form>
   </div>
@@ -61,13 +60,34 @@
       <h2 class="popup__photo-name"></h2>
     </form>
   </div>
+  <div class="popup popup_confirm">
+    <form class="popup__container popup__container_confirm" name="confirm-form" novalidate>
+      <button type="button" class="popup__close-button"></button>
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button type="submit" class="popup__confirm-button">Да</button>
+    </form>
+  </div>
+  <div class="popup popup_avatar">
+    <form class="popup__container popup__container_avatar" name="avatar-form" novalidate>
+      <button type="button" class="popup__close-button"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <input id="avatar-link" name="avatarLink" type="url" class="popup__field popup__field_avatar_link" placeholder="Ссылка на картинку"  required>
+      <span class="avatar-link-error  popup__error-text"></span>
+      <button type="submit" class="popup__save-button">Сохранить</button>
+    </form>
+  </div>
+  
+
   <template id="template">
     <div class="card">
       <button type="button" class="card__delete-button"></button>
       <img src="#" alt="" class="card__image">
       <div class="card__under">
         <h2 class="card__title"></h2>
-        <button type="button" class="card__like-button"></button>
+        <div class="card__like-container">
+          <button type="button" class="card__like-button"></button>
+          <p class="card__likes">1</p>
+        </div>
       </div>
     </div>
   </template>
