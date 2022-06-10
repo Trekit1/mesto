@@ -35,6 +35,7 @@ export default class Card {
             this._cardDeleteButton.classList.add('card__delete-button_active')
         }
         this._element.querySelector('.card__likes').textContent = this._likes.length;
+
         if(this.isLiked()) {
             this._cardLikeButton.classList.add('card__like-button_active');
         }
@@ -64,6 +65,7 @@ export default class Card {
     }
 
    
+   
 
 
     _likeButton() {
@@ -75,7 +77,6 @@ export default class Card {
             this._handleLikeCard(this._cardId, this._element);
             this._cardLikeButton.classList.add('card__like-button_active');
         }
-        
     }
 
     _deleteCard() {

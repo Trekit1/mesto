@@ -101,6 +101,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     console.log(err)
   })
 
+  
+
 
 
   //лайк карточки
