@@ -57,8 +57,6 @@ const popupWithFormProfile = new PopupWithForm(popupProfileSelector, handleProfi
 
 const popupWithFormCard = new PopupWithForm(popupCardSelector, handleCardFormSubmit)
 
-const popupWithConfirm = new PopupWithConfirm (popupConfirmSelector)
-
 const popupWithAvatar = new PopupWithForm(popupAvatarSelector, handleAvatarFormSubmit)
 
 //информация о пользователе
@@ -69,7 +67,6 @@ const userData = new UserInfo({
 });
 
 //слушатели попапов
-popupWithConfirm.setEventListeners();
 popupWithFormProfile.setEventListeners();
 popupWithFormCard.setEventListeners();
 popupWithPhoto.setEventListeners();
@@ -80,8 +77,7 @@ popupWithAvatar.setEventListeners();
 
 //функция создания карточки
 function createCard(item, userInfo) {
-  const card = new Card(item, "#template", (name,link) => {popupWithPhoto.openPopup(name, link)}, userInfo, () => {popupWithConfirm.openPopup()}, handleConfirmSubmit, handleLikeCard,handleDislikeCard);
-  console.log(card.isLiked())
+  const card = new Card(item, "#template", (name,link) => {popupWithPhoto.openPopup(name, link)}, userInfo, () => {popupWithConfirm.openPopup()}, handleDeleteCard, handleLikeCard,handleDislikeCard);
   const cardElement = card.createCard();
   return cardElement
 }; 
@@ -90,7 +86,6 @@ function createCard(item, userInfo) {
 //отрисовка карточек
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userInfo, cards]) => {
-    console.log(cards)
      //установка данных пользователя
     userData.setUserInfo(userInfo);
       //отрисовка карточек
@@ -108,36 +103,29 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
 
 
-  
+  //лайк карточки
   function handleLikeCard(cardId,card) {
     api.likeCard(cardId)
     .then((res) => {
-      let likeNumber = card.querySelector('.card__likes');
+      const likeNumber = card.querySelector('.card__likes');
       likeNumber.textContent = res.likes.length;
-      console.log(res)
     })
     .catch((err) => {
       console.log(err)
     })
   }
-
+  
+//дислайк карточки 
   function handleDislikeCard(cardId, card) {
     api.dislikeCard(cardId)
     .then((res) => {
-      let likeNumber = card.querySelector('.card__likes');
+      const likeNumber = card.querySelector('.card__likes');
       likeNumber.textContent = res.likes.length;
-      console.log('дислайк')
     })
     .catch((err) => {
       console.log(err)
     })
   }
-
- /* if (!this._cardLikeContainer.contains(this._cardLikeButtonActive)) {
-    this._handleLikeCard(this._cardId, this._element);;
-}  else {
-    this._handleDislikeCard(this._cardId, this._element);
-} */
 
 
 
@@ -153,9 +141,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     }
   }
   
-
-
-
 
   //Добавление новой карточки 
 function handleCardFormSubmit (data) {
@@ -173,17 +158,24 @@ function handleCardFormSubmit (data) {
     })
 };
 
-
-
-function handleConfirmSubmit (idCard) {
-  api.deleteCard(idCard)
-    .then((res) => {
-
-      console.log('удалил')
+//удаление карточки 
+const handleDeleteCard = (item) => {
+  const popupWithConfirm = new PopupWithConfirm (popupConfirmSelector,  () => {
+    const id = item._cardId;
+    api.deleteCard(id)
+    .then(() => {
+      item._deleteCard();
+    })
+    .then(() =>{
+      popupWithConfirm.closePopup();
     })
     .catch((err) => {
       console.log(err)
     })
+
+  });
+  popupWithConfirm.openPopup();
+  popupWithConfirm.setEventListeners();
 }
 
 

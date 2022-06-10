@@ -47,15 +47,7 @@ export default class Card {
         return Boolean(this._likes.find(item => item._id === this._userId))
     };
     
-    updateLikesView() {
-        this._element.querySelector('.card__likes').textContent = data.likes.length;
-
-        if(this.isLiked()) {
-            this._cardLikeButton.classList.add('card__like-button_active');
-        } else {
-            this._cardLikeButton.classList.remove('card__like-button_active');
-        }
-    }
+   
 
     _setEventListeners() {
         this._cardLikeButton.addEventListener('click', () => {
@@ -63,8 +55,7 @@ export default class Card {
         })
 
         this._cardDeleteButton.addEventListener('click', () => {
-            this._handleDeleteCard(this._cardId);
-            this._deleteCard();
+            this._handleDeleteCard(this);
         })
 
         this._element.querySelector('.card__image').addEventListener('click', () => {
