@@ -34,7 +34,6 @@ userAvatar,
 saveButtonAvatar,
 saveButtonProfile,
 saveButtonCard,
-profileAvatar,
 popupAvatarContainer,
 avatarLinkInput,
 popupAvatarOpen,
@@ -59,11 +58,15 @@ const popupWithFormCard = new PopupWithForm(popupCardSelector, handleCardFormSub
 
 const popupWithAvatar = new PopupWithForm(popupAvatarSelector, handleAvatarFormSubmit)
 
+const popupWithConfirm = new PopupWithConfirm(popupConfirmSelector)
+
+
+
 //информация о пользователе
 const userData = new UserInfo({
   nameElement: profileName,
   jobElement: profileJob,
-  userAvatar: userAvatar
+  userAvatar: userAvatar,
 });
 
 //слушатели попапов
@@ -71,7 +74,12 @@ popupWithFormProfile.setEventListeners();
 popupWithFormCard.setEventListeners();
 popupWithPhoto.setEventListeners();
 popupWithAvatar.setEventListeners();
+popupWithConfirm.setEventListeners();
 
+
+
+let cardList
+let userInfo
 
 
 
@@ -83,16 +91,18 @@ function createCard(item, userInfo) {
 }; 
 
 
+
 //отрисовка карточек
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([userInfo, cards]) => {
+  .then(([data, cards]) => {
+    userInfo = data;
      //установка данных пользователя
     userData.setUserInfo(userInfo);
       //отрисовка карточек
-    const cardList = new Section({
+    cardList = new Section({
       data: cards,
       renderer: (item) => {
-        cardList.addItem(createCard(item, userInfo));
+        cardList.addItem(createCard(item, data));
       }
     }, cardListSelector);
     cardList.renderItems(cards);
@@ -101,16 +111,12 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     console.log(err)
   })
 
-  
-
-
 
   //лайк карточки
-  function handleLikeCard(cardId,card) {
-    api.likeCard(cardId)
-    .then((res) => {
-      const likeNumber = card.querySelector('.card__likes');
-      likeNumber.textContent = res.likes.length;
+  function handleLikeCard(item) {
+    api.likeCard(item._cardId)
+    .then((data) => {
+      item.likeButtonOn(data);
     })
     .catch((err) => {
       console.log(err)
@@ -118,19 +124,15 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   }
   
 //дислайк карточки 
-  function handleDislikeCard(cardId, card) {
-    api.dislikeCard(cardId)
-    .then((res) => {
-      const likeNumber = card.querySelector('.card__likes');
-      likeNumber.textContent = res.likes.length;
+  function handleDislikeCard(item) {
+    api.dislikeCard(item._cardId)
+    .then((data) => {
+      item.likeButtonOff(data);
     })
     .catch((err) => {
       console.log(err)
     })
   }
-
-
-
 
 
   //Улучшенный UX всех форм
@@ -147,9 +149,9 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   //Добавление новой карточки 
 function handleCardFormSubmit (data) {
   renderLoadingProcess(true, saveButtonCard, popupWithFormCard)
-  Promise.all([api.getUserInfo(), api.createNewCard(data)])
-  .then(([userInfo, card]) => {
-    cardContainer.prepend(createCard(card,userInfo));
+  api.createNewCard(data)
+  .then((card) => {
+    cardList.addNewItem(createCard(card,userInfo));
     popupWithFormCard.closePopup();
     })
     .catch((err) => {
@@ -160,13 +162,14 @@ function handleCardFormSubmit (data) {
     })
 };
 
+
+
 //удаление карточки 
 const handleDeleteCard = (item) => {
-  const popupWithConfirm = new PopupWithConfirm (popupConfirmSelector,  () => {
-    const id = item._cardId;
-    api.deleteCard(id)
+  popupWithConfirm.setHandleFormSubmit( () => {
+    api.deleteCard(item._cardId)
     .then(() => {
-      item._deleteCard();
+      item.deleteCard();
     })
     .then(() =>{
       popupWithConfirm.closePopup();
@@ -177,9 +180,7 @@ const handleDeleteCard = (item) => {
 
   });
   popupWithConfirm.openPopup();
-  popupWithConfirm.setEventListeners();
 }
-
 
 
 
@@ -191,16 +192,12 @@ popupAvatarOpen.addEventListener('click', () => {
 }); 
 
 
-
-
-
-
 //изменить аватар пользователя 
 function handleAvatarFormSubmit(data) {
   renderLoadingProcess(true, saveButtonAvatar, popupWithAvatar)
   api.changeUserAvatar(data)
   .then((data) => {
-    profileAvatar.src = data.avatar;
+    userData.changeUserAvatar(data);
   })
   .catch((err) => {
     console.log(err)
@@ -211,18 +208,13 @@ function handleAvatarFormSubmit(data) {
 }
 
 
-
-
-
 //Изменение данных о пользователе
 function handleProfileFormSubmit (data) {
   renderLoadingProcess(true, saveButtonProfile, popupWithFormProfile)
      api.changeUserInfo(data)
      .then((data) => {
-       profileName.textContent = data.name;
-       profileJob.textContent = data.about;
+      userData.changeUserInfo(data);
      })
-     
      .catch((err) => {
       console.log(err)
     })
