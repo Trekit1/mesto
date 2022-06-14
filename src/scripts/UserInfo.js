@@ -15,18 +15,19 @@ export default class UserInfo {
     }
 
     setUserInfo(data) {
-        this._nameElement.textContent = data.name;
-        this._jobeElement.textContent = data.about;
-        this._userAvatar.src = data.avatar;
+        this.changeUserInfo(data);
+        this.changeUserAvatar(data);
         this._userId = data._id;
-    }
-
-    changeUserAvatar(data) {
-        this._userAvatar.src = data.avatar;
     }
 
     changeUserInfo(data) {
         this._nameElement.textContent = data.name;
         this._jobeElement.textContent = data.about;
     }
+
+    changeUserAvatar(data) {
+        this._userAvatar.src = data.avatar;
+    }
+
+    
 }
